@@ -1,6 +1,6 @@
 import * as request from "../../lib/request.js";
 
-const base_url = "http://localhost:3030/users";
+const base_url = `${import.meta.env.VITE_API_URL}/users`;
 
 export const login = (userData) => {
     const result =  request.post(`${base_url}/login`, userData);

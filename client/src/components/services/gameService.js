@@ -1,5 +1,5 @@
 import * as request from "../../lib/request.js";
-const base_url = "http://localhost:3030/data/games";
+const base_url = `${import.meta.env.VITE_API_URL}/data/games`;
 
 export const createGame = async (gameData) => {
     const result = await request.post(base_url, gameData);

@@ -11,26 +11,26 @@ const GameCreate = () => {
     const summaryInput = useRef(""); 
 
     const onSubmitHandler = async (e) => {
-        e.preventDefault()
-        const title = titleInput.current.value;
-        const category = categoryInput.current.value;
-        const maxLevel = maxLevelInput.current.value;
-        const image = imageInput.current.value;
-        const summary = summaryInput.current.value;
-
-        const gameData = {
-            title,
-            category,
-            maxLevel,
-            image,
-            summary,
-        };
         
         try {
+            e.preventDefault()
+            const title = titleInput.current.value;
+            const category = categoryInput.current.value;
+            const maxLevel = maxLevelInput.current.value;
+            const image = imageInput.current.value;
+            const summary = summaryInput.current.value;
+    
+            const gameData = {
+                title,
+                category,
+                maxLevel,
+                image,
+                summary,
+            };
             await gameService.createGame(gameData);
             navigate( "/all-games");
         } catch (err) {
-            alert(err.message)
+            navigate('/create')
         }
     }
     

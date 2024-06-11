@@ -8,30 +8,47 @@ import usePersistedState from "../hooks/usePersistedState";
 const AuthContext = createContext();
 AuthContext.displayName = "AuthContext";
 
-export const AuthProvider = ({
-children,
-}) => {
-    const [auth, setAuth] = usePersistedState('auth',{});
+export const AuthProvider = ({ children }) => {
+    const [auth, setAuth] = usePersistedState("auth", {});
 
     const navigate = useNavigate();
     useContext(AuthContext);
 
     const loginSubmitHandler = async (values) => {
-        const user = await authService.login(values);
+        try {
+            const user = await authService.login(values);
 
-        setAuth(user);
-        navigate(Path.Home);
+            if (!user) {
+                throw new Error("Wrong Input");
+            }
+
+            setAuth(user);
+            navigate(Path.Home);
+        } catch (error) {
+            navigate('/login')
+        }
     };
 
     const registerSubmitHandler = async (values) => {
-        const user = await authService.register(values.email, values.password);
+        try {
+            const user = await authService.register(
+                values.email,
+                values.password
+            );
 
-        setAuth(user);
-        navigate(Path.Home);
+            if (!user) {
+                throw new Error("Wrong Input");
+            }
+
+            setAuth(user);
+            navigate(Path.Home);
+        } catch (error) {
+            navigate("/register");
+        }
     };
 
     const logoutHandler = () => {
-        setAuth('',{});
+        setAuth("", {});
         localStorage.clear();
         navigate(Path.Home);
     };
@@ -41,14 +58,12 @@ children,
         registerSubmitHandler,
         logoutHandler,
         isAuth: !!auth.accessToken,
-        user: auth._id || 'guest',
-        username: auth.email || 'guest'
+        user: auth._id || "guest",
+        username: auth.email || "guest",
     };
 
     return (
-        <AuthContext.Provider value={values}>
-            {children}
-        </AuthContext.Provider>
+        <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
     );
 };
 

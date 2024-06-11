@@ -27,11 +27,16 @@ const GameEdit = () => {
     };
 
     const editSubmitHandler = async (e) => {
-        e.preventDefault()
-        const values = Object.fromEntries(new FormData(e.target))
-
-        await gameService.editGame(gameId, values)
-        navigate(`/details/${gameId}`)
+        try {
+            
+            e.preventDefault()
+            const values = Object.fromEntries(new FormData(e.target))
+    
+            await gameService.editGame(gameId, values)
+            navigate(`/details/${gameId}`)
+        } catch (error) {
+            navigate(`/edit/${gameId}`);
+        }
     }
 
     return (

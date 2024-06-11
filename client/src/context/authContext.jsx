@@ -41,7 +41,8 @@ children,
         registerSubmitHandler,
         logoutHandler,
         isAuth: !!auth.accessToken,
-        user: auth._id || 'guest'
+        user: auth._id || 'guest',
+        username: auth.email || 'guest'
     };
 
     return (

@@ -24,10 +24,8 @@ function App() {
                 <Header />
                 <Routes>
                     <Route path={Path.Home} element={<Home />}></Route>
-                    <Route
-                        path={Path["All-Games"]}
-                        element={<GameList />}
-                    ></Route>
+                    <Route path={Path["All-Games"]}element={<GameList />}></Route>
+                    <Route path={Path.Details} element={<GameDetails />}></Route>
                     <Route path={Path.Login} element={<Login />}></Route>
                     <Route path={Path.Register} element={<Register />}></Route>
                     <Route path={Path.Logout} element={<Logout />}></Route>
@@ -36,8 +34,6 @@ function App() {
                         <Route path={Path["Create-Game"]} element={<GameCreate />}></Route>
                         <Route path={Path.Delete} element={<GameDelete />}></Route>
                         <Route path={Path.Edit} element={<GameEdit />}></Route>
-                        <Route path={Path.Details} element={<GameDetails />}
-                    ></Route>
                     </Route>
                 </Routes>
             </AuthProvider>

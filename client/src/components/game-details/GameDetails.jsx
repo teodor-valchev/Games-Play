@@ -8,7 +8,7 @@ import { useForm } from "../../hooks/useForm";
 import Path from "../../paths";
 
 const GameDetails = () => {
-    const { userId } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const { gameId } = useParams("gameId");
     const [game, setGame] = useState({});
     const [comments, setComments] = useState([]);
@@ -47,7 +47,7 @@ const GameDetails = () => {
                     <h2>Comments:</h2>
                     <ul>
                         {/* <!-- list all comments for current game (If any) --> */}
-                        {comments.length ? (
+                        {comments ? (
                             comments.map((comment) => (
                                 <li key={comment._id} className="comment">
                                     <p>{comment.text}</p>
@@ -58,7 +58,7 @@ const GameDetails = () => {
                         )}
                     </ul>
                 </div>
-                {userId === game._ownerId && (
+                {user === game?._ownerId && (
                     <div className="buttons">
                         <Link to={Path.Edit.replace(':gameId', gameId)} className="button">
                             Edit

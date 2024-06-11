@@ -8,7 +8,7 @@ import { useForm } from "../../hooks/useForm";
 import Path from "../../paths";
 
 const GameDetails = () => {
-    const { userId } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const { gameId } = useParams("gameId");
     const [game, setGame] = useState({});
     const [comments, setComments] = useState([]);
@@ -47,7 +47,7 @@ const GameDetails = () => {
                     <h2>Comments:</h2>
                     <ul>
                         {/* <!-- list all comments for current game (If any) --> */}
-                        {comments.length ? (
+                        {comments ? (
                             comments.map((comment) => (
                                 <li key={comment._id} className="comment">
                                     <p>{comment.text}</p>
@@ -58,12 +58,18 @@ const GameDetails = () => {
                         )}
                     </ul>
                 </div>
-                {userId === game._ownerId && (
+                {user === game?._ownerId && (
                     <div className="buttons">
-                        <Link to={Path.Edit.replace(':gameId', gameId)} className="button">
+                        <Link
+                            to={Path.Edit.replace(":gameId", gameId)}
+                            className="button"
+                        >
                             Edit
                         </Link>
-                        <Link to={Path.Delete.replace(':gameId', gameId)} className="button">
+                        <Link
+                            to={Path.Delete.replace(":gameId", gameId)}
+                            className="button"
+                        >
                             Delete
                         </Link>
                     </div>
@@ -72,22 +78,26 @@ const GameDetails = () => {
 
             {/* <!-- Bonus -->
             <!-- Add Comment ( Only for logged-in users, which is not creators of the current game ) --> */}
-            <article className="create-comment">
-                <label>Add new comment:</label>
-                <form onSubmit={onFormSubmit} className="form">
-                    <textarea
-                        name="comment"
-                        placeholder="Comment......"
-                        onChange={onChange}
-                        value={values.comment}
-                    ></textarea>
-                    <input
-                        className="btn submit"
-                        type="submit"
-                        value="Add Comment"
-                    />
-                </form>
-            </article>
+            {user === "guest" ? (
+                ""
+            ) : (
+                <article className="create-comment">
+                    <label>Add new comment:</label>
+                    <form onSubmit={onFormSubmit} className="form">
+                        <textarea
+                            name="comment"
+                            placeholder="Comment......"
+                            onChange={onChange}
+                            value={values.comment}
+                        ></textarea>
+                        <input
+                            className="btn submit"
+                            type="submit"
+                            value="Add Comment"
+                        />
+                    </form>
+                </article>
+            )}
         </section>
     );
 };

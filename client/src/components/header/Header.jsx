@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../context/authContext";
 
 const Header = () => {
-    const { isAuth } = useContext(AuthContext);
+    const { isAuth, username } = useContext(AuthContext);
     return (
         <header>
             <h1>
@@ -26,6 +26,7 @@ const Header = () => {
                         <Link to="/register">Register</Link>
                     </div>
                 )}
+                <span>Welcome, {username}</span>
             </nav>
         </header>
     );

@@ -1,5 +1,6 @@
 import * as request from "../../lib/request.js";
-const base_url = "http://localhost:3030/data/comments";
+
+const base_url = `${import.meta.env.VITE_API_URL}/data/comments`;
 
 export const createComment = async (gameId, text) => {
     const data = {

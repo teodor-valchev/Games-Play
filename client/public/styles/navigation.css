@@ -83,8 +83,6 @@ nav a:hover {
     }
 
     header {
-        display: flex;
-        flex-wrap: wrap;
         width: -webkit-fill-available;
     }
 

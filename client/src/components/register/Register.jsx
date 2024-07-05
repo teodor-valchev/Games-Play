@@ -62,8 +62,8 @@ const Register = () => {
 
                     <p className="field">
                         <span>
-                            If you already have profile click{" "}
-                            <Link href={Path.Login}>here</Link>
+                            If you already have profile click
+                            <Link to={Path.Login}>here</Link>
                         </span>
                     </p>
                 </div>

@@ -129,4 +129,8 @@
     .create-comment {
         width: fit-content;
     }
+
+    #game-details > h1 {
+        margin-right: 60px;
+    }
 }

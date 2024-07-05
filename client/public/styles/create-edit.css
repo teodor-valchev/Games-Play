@@ -36,3 +36,19 @@ textarea {
     color: black;
     box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
 }
+
+@media (max-width: 599px) {
+    #create-page,
+    #edit-page {
+        width: fit-content;
+        padding: 20px;
+    }
+
+    input {
+        width: 120%;
+    }
+
+    .container > h1 {
+        font-size: 25px;
+    }
+}

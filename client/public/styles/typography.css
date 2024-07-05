@@ -56,9 +56,16 @@ blockquote {
     margin: 0.5em;
 }
 
-blockquote>cite {
+blockquote > cite {
     display: block;
     text-align: right;
     margin: 0.5em 2em;
     font-weight: bold;
+}
+
+@media (max-width: 599px) {
+    p,
+    div {
+        margin: 0;
+    }
 }

@@ -1,5 +1,5 @@
 body {
-    background-image: url('/images/bg-fixed-3.jpg');
+    background-image: url("/images/bg-fixed-3.jpg");
     background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -22,7 +22,7 @@ footer {
 
 .home {
     font-size: auto;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 header {
@@ -39,13 +39,13 @@ header h1 {
 
 header nav {
     font-size: auto;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, "Times New Roman", Times, serif;
     position: absolute;
     right: 0;
     bottom: 8px;
 }
 
-header nav>* {
+header nav > * {
     float: left;
 }
 
@@ -75,4 +75,20 @@ nav a:hover {
 #guest {
     margin: 0;
     padding: 0;
+}
+
+@media (max-width: 599px) {
+    header nav {
+        position: unset;
+    }
+
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        width: -webkit-fill-available;
+    }
+
+    body {
+        width: fit-content;
+    }
 }

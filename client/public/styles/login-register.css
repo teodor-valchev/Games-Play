@@ -34,14 +34,14 @@
     box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
 }
 
-.container>h1 {
+.container > h1 {
     margin-top: 15px;
     font-weight: 900;
     font-size: 2.7rem;
     text-align: center;
     color: white;
     letter-spacing: 1px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, "Times New Roman", Times, serif;
     margin-bottom: 17px;
 }
 
@@ -57,10 +57,10 @@ input {
 
 label {
     margin-bottom: 8px;
-    font-size: 27px;
+    font-size: 26px;
     color: white;
     margin-top: 13px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 label:nth-of-type(2) {
@@ -69,8 +69,7 @@ label:nth-of-type(2) {
 
 input::placeholder {
     color: rgba(184, 179, 179, 0.678);
-};
-
+}
 
 label[for="female"] {
     margin-top: 10px;
@@ -90,7 +89,7 @@ input[type="email"] {
     box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
 }
 
-label[for="terms"]>input {
+label[for="terms"] > input {
     display: inline;
 }
 
@@ -117,7 +116,7 @@ label[for="terms"]>input {
     margin-top: 0px;
 }
 
-.field>span {
+.field > span {
     position: absolute;
     font-size: 18px;
     bottom: 17px;
@@ -127,4 +126,15 @@ label[for="terms"]>input {
     background: rgb(235, 157, 142);
     border-radius: 10px;
     padding: 5px;
+}
+
+@media (max-width: 599px) {
+    #login-page,
+    #register-page {
+        width: fit-content;
+    }
+
+    input {
+        width: 120%;
+    }
 }

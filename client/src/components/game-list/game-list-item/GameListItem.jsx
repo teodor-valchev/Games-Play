@@ -5,8 +5,10 @@ const GameListItem = ({ _id, category, image, title }) => {
         <div className="allGames">
             <div className="allGames-info">
                 <img src={image} />
-                <h6>{title}</h6>
-                <h2>{category}</h2>
+                <div className="description">
+                    <h6>{title}</h6>
+                    <h2>{category}</h2>
+                </div>
                 <Link to={`/details/${_id}`} className="details-button">
                     Details
                 </Link>
